@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары</title>
+    <!-- Подключаем Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Товары</h1>
+        <a href="/items/new/" class="btn btn-success mb-3">Добавить товар</a>
+
+        <div class="list-group">
+            {% for item in items %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ item.name }}</h5>
+                    <p class="mb-1">{{ item.description }}</p>
+                    <p class="text-muted">Цена: {{ item.price }} ₽</p>
+                </div>
+            {% else %}
+                <p>Нет товаров для отображения.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
